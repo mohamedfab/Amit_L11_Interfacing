@@ -2,81 +2,216 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
--include ../makefile.init
-
+SHELL := cmd.exe
 RM := rm -rf
 
-# All of the sources participating in the build are defined here
--include sources.mk
--include subdir.mk
--include objects.mk
+USER_OBJS :=
+
+LIBS := 
+PROJ := 
+
+O_SRCS := 
+C_SRCS := 
+S_SRCS := 
+S_UPPER_SRCS := 
+OBJ_SRCS := 
+ASM_SRCS := 
+PREPROCESSING_SRCS := 
+OBJS := 
+OBJS_AS_ARGS := 
+C_DEPS := 
+C_DEPS_AS_ARGS := 
+EXECUTABLES := 
+OUTPUT_FILE_PATH :=
+OUTPUT_FILE_PATH_AS_ARGS :=
+AVR_APP_PATH :=$$$AVR_APP_PATH$$$
+QUOTE := "
+ADDITIONAL_DEPENDENCIES:=
+OUTPUT_FILE_DEP:=
+LIB_DEP:=
+
+# Every subdirectory with source files must be described here
+SUBDIRS :=  \
+../00-LIB \
+../01-MCAL \
+../01-MCAL/DIO \
+../01-MCAL/DIO/Inc \
+../01-MCAL/DIO/Src \
+../01-MCAL/EXT_INT/Inc \
+../01-MCAL/EXT_INT/Src \
+../01-MCAL/GLBL_INT \
+../01-MCAL/GLBL_INT/Inc \
+../01-MCAL/GLBL_INT/Src \
+../01-MCAL/EXT_INT \
+../01-MCAL/TIMER0 \
+../01-MCAL/TIMER0/Inc \
+../01-MCAL/TIMER0/Src \
+../02-HAL \
+../02-HAL/LCD \
+../02-HAL/LCD/Inc \
+../02-HAL/LCD/Src \
+../02-HAL/LED \
+../02-HAL/LED/Inc \
+../02-HAL/LED/Src \
+../03-APP
+
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS +=  \
+../01-MCAL/DIO/Src/Dio.c \
+../01-MCAL/EXT_INT/Src/ExtInt.c \
+../01-MCAL/GLBL_INT/Src/GlblInterrupt.c \
+../02-HAL/LCD/Src/Lcd.c \
+../02-HAL/LED/Src/Led.c \
+../03-APP/main.c
+
+
+PREPROCESSING_SRCS += 
+
+
+ASM_SRCS += 
+
+
+OBJS +=  \
+01-MCAL/DIO/Src/Dio.o \
+01-MCAL/EXT_INT/Src/ExtInt.o \
+01-MCAL/GLBL_INT/Src/GlblInterrupt.o \
+02-HAL/LCD/Src/Lcd.o \
+02-HAL/LED/Src/Led.o \
+03-APP/main.o
+
+OBJS_AS_ARGS +=  \
+01-MCAL/DIO/Src/Dio.o \
+01-MCAL/EXT_INT/Src/ExtInt.o \
+01-MCAL/GLBL_INT/Src/GlblInterrupt.o \
+02-HAL/LCD/Src/Lcd.o \
+02-HAL/LED/Src/Led.o \
+03-APP/main.o
+
+C_DEPS +=  \
+01-MCAL/DIO/Src/Dio.d \
+01-MCAL/EXT_INT/Src/ExtInt.d \
+01-MCAL/GLBL_INT/Src/GlblInterrupt.d \
+02-HAL/LCD/Src/Lcd.d \
+02-HAL/LED/Src/Led.d \
+03-APP/main.d
+
+C_DEPS_AS_ARGS +=  \
+01-MCAL/DIO/Src/Dio.d \
+01-MCAL/EXT_INT/Src/ExtInt.d \
+01-MCAL/GLBL_INT/Src/GlblInterrupt.d \
+02-HAL/LCD/Src/Lcd.d \
+02-HAL/LED/Src/Led.d \
+03-APP/main.d
+
+OUTPUT_FILE_PATH +=Amit_L11_Interfacing.elf
+
+OUTPUT_FILE_PATH_AS_ARGS +=Amit_L11_Interfacing.elf
+
+ADDITIONAL_DEPENDENCIES:=
+
+OUTPUT_FILE_DEP:= ./makedep.mk
+
+LIB_DEP+= 
+
+# AVR32/GNU C Compiler
+
+
+
+
+
+
+
+
+
+
+
+
+
+01-MCAL/DIO/Src/%.o: ../01-MCAL/DIO/Src/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+01-MCAL/EXT_INT/Src/%.o: ../01-MCAL/EXT_INT/Src/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+01-MCAL/GLBL_INT/Src/%.o: ../01-MCAL/GLBL_INT/Src/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+02-HAL/LCD/Src/%.o: ../02-HAL/LCD/Src/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+02-HAL/LED/Src/%.o: ../02-HAL/LED/Src/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+03-APP/%.o: ../03-APP/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+
+
+# AVR32/GNU Preprocessing Assembler
+
+
+
+# AVR32/GNU Assembler
+
+
+
 
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(ASM_DEPS)),)
--include $(ASM_DEPS)
-endif
-ifneq ($(strip $(S_DEPS)),)
--include $(S_DEPS)
-endif
-ifneq ($(strip $(S_UPPER_DEPS)),)
--include $(S_UPPER_DEPS)
-endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
 endif
 endif
 
--include ../makefile.defs
-
-OPTIONAL_TOOL_DEPS := \
-$(wildcard ../makefile.defs) \
-$(wildcard ../makefile.init) \
-$(wildcard ../makefile.targets) \
-
-
-BUILD_ARTIFACT_NAME := Amit_L11_Interfacing
-BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX :=
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
-
 # Add inputs and outputs from these tool invocations to the build variables 
-LSS += \
-Amit_L11_Interfacing.lss \
-
-SIZEDUMMY += \
-sizedummy \
-
 
 # All Target
-all: Amit_L11_Interfacing.elf secondary-outputs
+all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 
-# Tool invocations
-Amit_L11_Interfacing.elf: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
-	@echo 'Building target: $@'
-	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,Amit_L11_Interfacing.map -mmcu=atmega32 -o "Amit_L11_Interfacing.elf" $(OBJS) $(USER_OBJS) $(LIBS)
-	@echo 'Finished building target: $@'
-	@echo ' '
+$(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP)
+	@echo Building target: $@
+	@echo Invoking: AVR/GNU Linker : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Amit_L11_Interfacing.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega32 
+	@echo Finished building target: $@
+	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "Amit_L11_Interfacing.elf" "Amit_L11_Interfacing.hex"
+	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Amit_L11_Interfacing.elf" "Amit_L11_Interfacing.eep" || exit 0
+	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "Amit_L11_Interfacing.elf" > "Amit_L11_Interfacing.lss"
+	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature  "Amit_L11_Interfacing.elf" "Amit_L11_Interfacing.srec"
+	"C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-size.exe" "Amit_L11_Interfacing.elf"
+	
+	
 
-Amit_L11_Interfacing.lss: Amit_L11_Interfacing.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
-	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Amit_L11_Interfacing.elf  >"Amit_L11_Interfacing.lss"
-	@echo 'Finished building: $@'
-	@echo ' '
 
-sizedummy: Amit_L11_Interfacing.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
-	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 Amit_L11_Interfacing.elf
-	@echo 'Finished building: $@'
-	@echo ' '
+
+
 
 # Other Targets
 clean:
-	-$(RM) $(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Amit_L11_Interfacing.elf
-	-@echo ' '
-
-secondary-outputs: $(LSS) $(SIZEDUMMY)
-
-.PHONY: all clean dependents
-
--include ../makefile.targets
+	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
+	-$(RM) $(C_DEPS_AS_ARGS)   
+	rm -rf "Amit_L11_Interfacing.elf" "Amit_L11_Interfacing.a" "Amit_L11_Interfacing.hex" "Amit_L11_Interfacing.lss" "Amit_L11_Interfacing.eep" "Amit_L11_Interfacing.map" "Amit_L11_Interfacing.srec"
+	
