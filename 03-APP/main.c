@@ -6,43 +6,26 @@
  */ 
 
 #define F_CPU 16000000UL
+#include "util/delay.h"
 #include "GlblInterrupt_Interface.h"
-#include "Timer0_Private.h"
-#include "avr/interrupt.h"
+#include "BIT_MATH.h"
+#include "avr/io.h"
 #include "Led_Interface.h"
-
-#define NO_OF_OVERFLOWS		(100)
-#define TIMER0_START_VALUE	(100)
-#define PRESCALLER_1024		(5)
-
-volatile u8 count=0;
-ISR(TIMER0_OVF_vect)
-{
-	count++;
-	if (count == NO_OF_OVERFLOWS)
-	{
-	 /*	Take Your Action	*/
-	 
-	 Led_Toggle(LED0);
-	 count=0;
-	}
-	TIMER0_TCNT0_REG = TIMER0_START_VALUE;
-}
-
 int main(void)
 {
 	Led_Init();
-	EnableAllInterrupts();
-	TIMER0_TCNT0_REG = TIMER0_START_VALUE;
-	/*	Enable Timer0 Overflow Interrupt	*/
-	SET_BIT(TIMER0_TIMSK_REG,OVERFLOW_INT_EN_BIT);
-	/*	Set Timer0 Prescaller to /1024	*/
-	/*	Start Timer	*/
-	TIMER0_TCCR0_REG|=PRESCALLER_1024;
+	/*	Reset CPU every 2.1 s	*/
+SET_BIT(WDTCR,3);	
+WDTCR|=0x07;
 
-	
+Led_ON(LED0);
+_delay_ms(1000);
+Led_OFF(LED0);
+_delay_ms(1000);
+
+
     while(1)
     {
-       
+		asm("WDR");
     }
 }
