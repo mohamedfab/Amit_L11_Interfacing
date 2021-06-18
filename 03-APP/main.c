@@ -5,27 +5,34 @@
  *  Author: Eng_Fawzi
  */ 
 
+
+
+
 #define F_CPU 16000000UL
 #include "util/delay.h"
 #include "GlblInterrupt_Interface.h"
 #include "BIT_MATH.h"
 #include "avr/io.h"
 #include "Led_Interface.h"
+#include "Uart_Interface.h"
+#include "Led_Interface.h"
 int main(void)
 {
+	u8 uartRead;
 	Led_Init();
-	/*	Reset CPU every 2.1 s	*/
-SET_BIT(WDTCR,3);	
-WDTCR|=0x07;
-
-Led_ON(LED0);
-_delay_ms(1000);
-Led_OFF(LED0);
-_delay_ms(1000);
-
-
+	UART_Init(103);
+	UART_TransmitStr("Hello UART.............");
     while(1)
     {
-		asm("WDR");
+		uartRead = UART_ReceiveChr();
+		
+		if (uartRead == 'm')
+		{
+			Led_Toggle(LED0);
+		}
+		else if (uartRead == 'l')
+		{
+			Led_Toggle(LED1);
+		}
     }
 }

@@ -67,43 +67,45 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
-        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-        <avrgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>DEBUG</Value>
-          </ListValues>
-        </avrgcc.compiler.symbols.DefSymbols>
-        <avrgcc.compiler.directories.IncludePaths>
-          <ListValues>
-            <Value>../00-LIB</Value>
-            <Value>../02-HAL/LCD/Inc</Value>
-            <Value>../01-MCAL/DIO/Inc</Value>
-            <Value>../01-MCAL/GLBL_INT/Inc</Value>
-            <Value>../01-MCAL/EXT_INT/Inc</Value>
-            <Value>../01-MCAL/TIMER0/Inc</Value>
-            <Value>../02-HAL/LED/Inc</Value>
-            <Value>../01-MCAL/ADC/Inc</Value>
-          </ListValues>
-        </avrgcc.compiler.directories.IncludePaths>
-        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
-        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
-        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-        <avrgcc.linker.general.UseVprintfLibrary>True</avrgcc.linker.general.UseVprintfLibrary>
-        <avrgcc.linker.libraries.Libraries>
-          <ListValues>
-            <Value>libm</Value>
-          </ListValues>
-        </avrgcc.linker.libraries.Libraries>
-        <avrgcc.linker.miscellaneous.LinkerFlags>-lprintf_flt</avrgcc.linker.miscellaneous.LinkerFlags>
-        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
-      </AvrGcc>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>DEBUG</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../00-LIB</Value>
+      <Value>../02-HAL/LCD/Inc</Value>
+      <Value>../01-MCAL/DIO/Inc</Value>
+      <Value>../01-MCAL/GLBL_INT/Inc</Value>
+      <Value>../01-MCAL/EXT_INT/Inc</Value>
+      <Value>../01-MCAL/TIMER0/Inc</Value>
+      <Value>../02-HAL/LED/Inc</Value>
+      <Value>../01-MCAL/ADC/Inc</Value>
+      <Value>../01-MCAL/UART/Inc</Value>
+      <Value>../01-MCAL/SPI/Inc</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.linker.general.UseVprintfLibrary>True</avrgcc.linker.general.UseVprintfLibrary>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.miscellaneous.LinkerFlags>-lprintf_flt</avrgcc.linker.miscellaneous.LinkerFlags>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
@@ -158,10 +160,37 @@
     <Compile Include="01-MCAL\GLBL_INT\Src\GlblInterrupt.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="01-MCAL\TIMER0\Inc\Timer0_Interface.h">
+    <Compile Include="01-MCAL\SPI\Inc\Spi_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\SPI\Inc\Spi_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\SPI\Inc\Spi_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\SPI\Src\Spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\TIMER0\Inc\Timer0.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\TIMER0\Inc\Timer0_Cfg.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="01-MCAL\TIMER0\Inc\Timer0_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\TIMER0\Src\Timer0.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\UART\Inc\Uart_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\UART\Inc\Uart_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\UART\Src\Uart.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="02-HAL\LCD\Inc\Lcd_Cfg.h">
@@ -207,10 +236,16 @@
     <Folder Include="01-MCAL\GLBL_INT\Src" />
     <Folder Include="01-MCAL\EXT_INT" />
     <Folder Include="01-MCAL\ADC" />
+    <Folder Include="01-MCAL\SPI" />
+    <Folder Include="01-MCAL\SPI\Inc" />
+    <Folder Include="01-MCAL\SPI\Src" />
+    <Folder Include="01-MCAL\UART" />
     <Folder Include="01-MCAL\TIMER1" />
     <Folder Include="01-MCAL\TIMER0" />
     <Folder Include="01-MCAL\TIMER0\Inc" />
     <Folder Include="01-MCAL\TIMER0\Src" />
+    <Folder Include="01-MCAL\UART\Inc" />
+    <Folder Include="01-MCAL\UART\Src" />
     <Folder Include="02-HAL" />
     <Folder Include="02-HAL\LCD" />
     <Folder Include="02-HAL\LCD\Inc" />
