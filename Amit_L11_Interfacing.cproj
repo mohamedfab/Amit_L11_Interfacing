@@ -90,6 +90,7 @@
       <Value>../01-MCAL/ADC/Inc</Value>
       <Value>../01-MCAL/UART/Inc</Value>
       <Value>../01-MCAL/SPI/Inc</Value>
+      <Value>../01-MCAL/I2C/Inc</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -158,6 +159,15 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="01-MCAL\GLBL_INT\Src\GlblInterrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\I2C\Inc\I2c_Interface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\I2C\Inc\I2c_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="01-MCAL\I2C\Src\I2c.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="01-MCAL\SPI\Inc\Spi_Interface.h">
@@ -236,6 +246,9 @@
     <Folder Include="01-MCAL\GLBL_INT\Src" />
     <Folder Include="01-MCAL\EXT_INT" />
     <Folder Include="01-MCAL\ADC" />
+    <Folder Include="01-MCAL\I2C" />
+    <Folder Include="01-MCAL\I2C\Inc" />
+    <Folder Include="01-MCAL\I2C\Src" />
     <Folder Include="01-MCAL\SPI" />
     <Folder Include="01-MCAL\SPI\Inc" />
     <Folder Include="01-MCAL\SPI\Src" />

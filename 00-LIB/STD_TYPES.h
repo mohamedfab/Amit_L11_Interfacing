@@ -14,5 +14,11 @@ typedef		signed				int		s32 ;
 typedef							float	f32 ;
 typedef							double	f64 ;
 
+typedef enum 
+{
+FALSE,
+TRUE
+}boolean;
+
 #endif
 

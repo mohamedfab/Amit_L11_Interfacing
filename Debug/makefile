@@ -46,6 +46,9 @@ SUBDIRS :=  \
 ../01-MCAL/GLBL_INT/Src \
 ../01-MCAL/EXT_INT \
 ../01-MCAL/ADC \
+../01-MCAL/I2C \
+../01-MCAL/I2C/Inc \
+../01-MCAL/I2C/Src \
 ../01-MCAL/SPI \
 ../01-MCAL/SPI/Inc \
 ../01-MCAL/SPI/Src \
@@ -72,6 +75,7 @@ C_SRCS +=  \
 ../01-MCAL/DIO/Src/Dio.c \
 ../01-MCAL/EXT_INT/Src/ExtInt.c \
 ../01-MCAL/GLBL_INT/Src/GlblInterrupt.c \
+../01-MCAL/I2C/Src/I2c.c \
 ../01-MCAL/SPI/Src/Spi.c \
 ../01-MCAL/TIMER0/Src/Timer0.c \
 ../01-MCAL/UART/Src/Uart.c \
@@ -91,6 +95,7 @@ OBJS +=  \
 01-MCAL/DIO/Src/Dio.o \
 01-MCAL/EXT_INT/Src/ExtInt.o \
 01-MCAL/GLBL_INT/Src/GlblInterrupt.o \
+01-MCAL/I2C/Src/I2c.o \
 01-MCAL/SPI/Src/Spi.o \
 01-MCAL/TIMER0/Src/Timer0.o \
 01-MCAL/UART/Src/Uart.o \
@@ -103,6 +108,7 @@ OBJS_AS_ARGS +=  \
 01-MCAL/DIO/Src/Dio.o \
 01-MCAL/EXT_INT/Src/ExtInt.o \
 01-MCAL/GLBL_INT/Src/GlblInterrupt.o \
+01-MCAL/I2C/Src/I2c.o \
 01-MCAL/SPI/Src/Spi.o \
 01-MCAL/TIMER0/Src/Timer0.o \
 01-MCAL/UART/Src/Uart.o \
@@ -115,6 +121,7 @@ C_DEPS +=  \
 01-MCAL/DIO/Src/Dio.d \
 01-MCAL/EXT_INT/Src/ExtInt.d \
 01-MCAL/GLBL_INT/Src/GlblInterrupt.d \
+01-MCAL/I2C/Src/I2c.d \
 01-MCAL/SPI/Src/Spi.d \
 01-MCAL/TIMER0/Src/Timer0.d \
 01-MCAL/UART/Src/Uart.d \
@@ -127,6 +134,7 @@ C_DEPS_AS_ARGS +=  \
 01-MCAL/DIO/Src/Dio.d \
 01-MCAL/EXT_INT/Src/ExtInt.d \
 01-MCAL/GLBL_INT/Src/GlblInterrupt.d \
+01-MCAL/I2C/Src/I2c.d \
 01-MCAL/SPI/Src/Spi.d \
 01-MCAL/TIMER0/Src/Timer0.d \
 01-MCAL/UART/Src/Uart.d \
@@ -166,73 +174,82 @@ LIB_DEP+=
 
 
 
+
+
 01-MCAL/ADC/Src/%.o: ../01-MCAL/ADC/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 01-MCAL/DIO/Src/%.o: ../01-MCAL/DIO/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 01-MCAL/EXT_INT/Src/%.o: ../01-MCAL/EXT_INT/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 01-MCAL/GLBL_INT/Src/%.o: ../01-MCAL/GLBL_INT/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	@echo Finished building: $<
+	
+
+01-MCAL/I2C/Src/%.o: ../01-MCAL/I2C/Src/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 3.4.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 01-MCAL/SPI/Src/%.o: ../01-MCAL/SPI/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 01-MCAL/TIMER0/Src/%.o: ../01-MCAL/TIMER0/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 01-MCAL/UART/Src/%.o: ../01-MCAL/UART/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 02-HAL/LCD/Src/%.o: ../02-HAL/LCD/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 02-HAL/LED/Src/%.o: ../02-HAL/LED/Src/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 
 03-APP/%.o: ../03-APP/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 3.4.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.939\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -funsigned-char -funsigned-bitfields -DDEBUG  -I"../00-LIB" -I"../02-HAL/LCD/Inc" -I"../01-MCAL/DIO/Inc" -I"../01-MCAL/GLBL_INT/Inc" -I"../01-MCAL/EXT_INT/Inc" -I"../01-MCAL/TIMER0/Inc" -I"../02-HAL/LED/Inc" -I"../01-MCAL/ADC/Inc" -I"../01-MCAL/UART/Inc" -I"../01-MCAL/SPI/Inc" -I"../01-MCAL/I2C/Inc"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<"
 	@echo Finished building: $<
 	
 

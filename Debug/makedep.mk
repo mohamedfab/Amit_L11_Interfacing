@@ -10,6 +10,8 @@
 
 01-MCAL\GLBL_INT\Src\GlblInterrupt.c
 
+01-MCAL\I2C\Src\I2c.c
+
 01-MCAL\SPI\Src\Spi.c
 
 01-MCAL\TIMER0\Src\Timer0.c

@@ -12,10 +12,13 @@
 
 #define SPI_SS_PORT       	(DIO_PORTB)
 #define SPI_SS_CHANNEL		(DIO_CHANNEL4)
+
 #define SPI_MOSI_PORT       (DIO_PORTB)
 #define SPI_MOSI_CHANNEL	(DIO_CHANNEL5)
+
 #define SPI_MISO_PORT       (DIO_PORTB)
 #define SPI_MISO_CHANNEL	(DIO_CHANNEL6)
+
 #define SPI_SCK_PORT       	(DIO_PORTB)
 #define SPI_SCK_CHANNEL		(DIO_CHANNEL7)
 
